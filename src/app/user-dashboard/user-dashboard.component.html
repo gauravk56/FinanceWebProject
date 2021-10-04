@@ -1,0 +1,166 @@
+<html>
+<body>
+<div class="wrapper">
+    <div *ngIf="singleCust && editMode==false" class="user-details">
+        <div class="account-info">
+            <h3>User Details</h3>
+            <div class="account-info-data">
+                <div class="data">
+                    <h4>Username</h4>
+                    <p>{{singleCust.cust.username}}</p>
+                </div>
+                <div class="data">
+                    <h4>Date of Birth</h4>
+                    <p>{{singleCust.cust.birthdate}}</p>
+                </div>
+                <div class="data">
+                    <h4>Phone Number</h4>
+                    <p>{{singleCust.cust.phoneNo}}</p>
+                </div>
+                <div class="data">
+                    <h4>Email</h4>
+                    <p>{{singleCust.cust.email}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="bank-info">
+            <h3>Bank Details</h3>
+            <div class="bank-info-data">
+                <div class="data">
+                    <h4>Bank Name</h4>
+                    <p>{{singleCust.cust.bankName}}</p>
+                </div>
+                <div class="data">
+                    <h4>IFSC Code</h4>
+                    <p>{{singleCust.cust.ifscCode}}</p>
+                </div>
+                <div class="data">
+                    <h4>Account Number</h4>
+                    <p>{{singleCust.cust.accountNo}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="emi-card-info">
+            <h3>EMI Card Details</h3>
+            <div class="emi-card-info-data">
+                <div class="data">
+                    <h4>EMI Card Number</h4>
+                    <p>{{singleCust.cust.emiTable.emicardno}}</p>
+                </div>
+                <div class="data">
+                    <h4>Card Type</h4>
+                    <p>{{singleCust.cust.emicardtype.cardtype}}</p>
+                </div>  
+            </div>
+        </div>
+        <div class="edit-details"><button (click)="editUser()">Edit</button></div>
+    </div>
+    <div *ngIf="editMode" class="user-details">
+        <div class="account-info">
+            <h3>User Details</h3>
+            <div class="account-info-data">
+                <div class="data">
+                    <h4>Username</h4>
+                    <input type="text" value="{{singleCust.cust.username}}" [(ngModel)]="updatedCust.cust.username">
+                </div>
+                <div class="data">
+                    <h4>Date of Birth</h4>
+                    <p>{{singleCust.cust.birthdate}}</p>
+                </div>
+                <div class="data">
+                    <h4>Phone Number</h4>
+                    <input type="text" value="{{singleCust.cust.phoneNo}}" [(ngModel)]="updatedCust.cust.phoneNo">
+                </div>
+                <div class="data">
+                    <h4>Email</h4>
+                    <input type="text" value="{{singleCust.cust.email}}" [(ngModel)]="updatedCust.cust.email">
+                </div>
+            </div>
+        </div>
+        <div class="bank-info">
+            <h3>Bank Details</h3>
+            <div class="bank-info-data">
+                <div class="data">
+                    <h4>Bank Name</h4>
+                    <input type="text" value="{{singleCust.cust.bankName}}" [(ngModel)]="updatedCust.cust.bankName">
+                </div>
+                <div class="data">
+                    <h4>IFSC Code</h4>
+                    <input type="text" value="{{singleCust.cust.ifscCode}}" [(ngModel)]="updatedCust.cust.ifscCode">
+                </div>
+                <div class="data">
+                    <h4>Account Number</h4>
+                    <input type="text" value="{{singleCust.cust.accountNo}}" [(ngModel)]="updatedCust.cust.accountNo">
+                </div>
+            </div>
+        </div>
+        <div class="emi-card-info">
+            <h3>EMI Card Details</h3>
+            <div class="emi-card-info-data">
+                <div class="data">
+                    <h4>EMI Card Number</h4>
+                    <p>{{singleCust.cust.emiTable.emicardno}}</p>
+                </div>
+                <div class="data">
+                    <h4>Card Type</h4>
+                    <p>{{singleCust.cust.emicardtype.cardtype}}</p>
+                </div>  
+            </div>
+        </div>
+        <div class="edit-details"><button (click)="updateCustomer();editUser();">Save Details</button></div>
+    </div>
+    <table *ngIf="singleCust.cust.orders && singleCust.cust.orders.length" class="order-details" border=0>
+        <thead>
+            <th>Order Number</th>
+            <th>Product</th>
+            <th>Date of Purchase</th>
+            <th>Product Details</th>
+            <th>Cost</th>
+        </thead>
+        <tr *ngFor="let ord of singleCust.cust.orders">
+            <td>{{ord.orderid}}</td>
+            <td>{{ord.product.productname}}</td>
+            <td>{{ord.dateoforder}}</td>
+            <td>{{ord.product.productdetails}}</td>
+            <td>{{ord.product.productcost}}</td>
+        </tr>
+    </table>
+</div>
+<div class="wrapper">
+    <table class="emi-payment-table" border=0>
+        <thead>
+            <th>EMI ID</th>
+            <th>Date of Payment</th>
+            <th>Amount Paid</th>
+            <th>Count of Installments</th>
+            <th>Payment Status</th>
+        </thead>
+        <tr *ngFor="let install of singleCust.installs">
+            <td>{{install.emiId}}</td>
+            <td>{{install.paymentDate}}</td>
+            <td>{{install.amountPaid}}</td>
+            <td>{{install.installmentCount}}</td>
+            <td>{{install.paymentStatus}}</td>
+        </tr>
+    </table>
+    <table class="rem-payment-table" border=0>
+        <thead>
+            <th>EMI ID</th>
+            <th>Date of Payment</th>
+            <th>Remaining Installments</th>
+            <th>Payment Status</th>
+            <th>Payment Link</th>
+        </thead>
+        <tr *ngFor="let payment of singleCust.installs">
+            <ng-container *ngIf="payment.paymentStatus=='Pending'">
+            <td>{{payment.emiId}}</td>
+            <td>{{payment.paymentDate}}</td>
+            <td>{{payment.installmentCount}}</td>
+            <td>Payment Due</td>
+            <td><button (click)="updatePayment(payment)">Pay Now</button></td>
+        </ng-container>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

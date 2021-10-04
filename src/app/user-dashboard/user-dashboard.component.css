@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.wrapper{
+    display: flex;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+.user-details{
+    border-collapse: collapse;
+    width: 50%;
+    margin: 20px;
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+}
+
+.user-details h3{
+    height: 30px;
+    width: 100%;
+    background-color:#009879; 
+    color: white;
+}
+
+.user-details h4{
+    color: rgb(233, 233, 233)
+}
+
+.order-details{
+    height: 100%;
+    margin: 20px;
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+}
+
+.account-info-data, .bank-info-data, .emi-card-info-data{
+    display: flex;
+    margin: auto ;
+    padding: 20px;
+}
+
+.account-info-data .data{
+    width: 50%;
+}
+
+.account-info-data h4, .bank-info-data h4, .emi-card-info-data h4, .order-details h4{
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+    text-transform: uppercase;
+}
+
+
+.account-info-data .data,
+.bank-info-data .data,
+.emi-card-info-data .data{
+    padding: 10px;
+}
+
+.account-info h3, .bank-info h3, .emi-card-info h3, .order-details h3{
+   text-align: center;
+}
+
+.order-right, .order-left{
+    display: flex;
+}
+
+.order-header{
+    display: flex;
+}
+
+.order-header-data{
+    margin: 10px;
+}
+
+.emi-payment-table, .rem-payment-table{
+    width: 50%;
+    margin: 20px;
+}
+
+button{
+    background-color: rgb(75, 75, 182);
+    color: white;
+    border-radius:20px;
+    padding: 5px;
+}
+
+td{
+    text-align: left;
+    padding: 5px;
+    margin:5px;
+}
+
+thead th {
+    padding: 10px;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+tr{
+    border-radius: 10px;
+    background-color: cornsilk;
+}
+
+.wrapper .user-details, .order-details, .rem-payment-table,.emi-payment-table {
+    background-color: darkcyan;
+    padding: 10px;
+    border-radius: 20px;
+    border-collapse: collapse;
+    margin: 25px;
+    font-size: 1.1em;
+    font-family: sans-serif;
+    min-width: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+table{
+    margin:10px;
+}
+
+tr {
+    border-bottom: 1px solid #dddddd;
+}
+
